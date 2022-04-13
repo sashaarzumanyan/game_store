@@ -1,12 +1,21 @@
-import { setDeveloperList, setGameList, setGenerList, setPlatformsList, setStoresList } from "../redux/actions"
+import {
+    setGameList,
+    setGenerList,
+    setPlatformsList,
+    setStoresList
+} from "../redux/actions"
+import {
+    genreApi,
+    platformsApi,
+    storesApi
+} from "../API/genreAPI"
 import { gamesApi } from '../API/gamesAPI'
-import { developersApi, genreApi, platformsApi, storesApi } from "../API/genreAPI"
 
 
 export const getGameMiddleware = () => {
     return (dispatch, getState) => {
-        const { configs: { genre} } = getState()
-        gamesApi(genre).then((game) => {
+        const { configs: { genre, platform }} = getState()
+        gamesApi(genre, platform).then((game) => {
             return dispatch(setGameList(game))
         })
     }

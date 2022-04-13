@@ -1,20 +1,26 @@
 import React, { useState } from 'react'
-import { Collapse, Grid, List, ListItemButton, ListItemIcon, ListItemText, Box, ListItem, Typography, IconButton } from '@mui/material'
+import {
+    Collapse,
+    List,
+    ListItemButton,
+    ListItemText,
+    Box,
+    ListItem,
+    Typography,
+    IconButton
+} from '@mui/material'
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useDispatch } from 'react-redux';
-import { setConfigsAction } from '../redux/actions';
 
 
-const CategoryList = ({ headerName, info }) => {
-    const dispatch = useDispatch()
+
+const CategoryList = ({ headerName, info, hendleSetConfigs }) => {
     const [open, setOpen] = useState(false)
 
     const handleClick = () => {
         setOpen(!open)
     }
-    const hendleSetConfigs = (id) => {
-        dispatch(setConfigsAction(id))
+    const handleClose = () => {
         setOpen(!open)
     }
     return (
@@ -24,8 +30,10 @@ const CategoryList = ({ headerName, info }) => {
             borderRadius: 2,
             backgroundColor: 'primary.main',
             color: 'white',
-            position: 'sticky'
-
+            width: '80%',
+            overflow: 'auto',
+            whiteSpace: 'initial',
+            height: open ? '30vh' : null
         }} >
             <List >
                 <ListItemButton onClick={handleClick}>
@@ -47,7 +55,7 @@ const CategoryList = ({ headerName, info }) => {
                     >
                         {info.map((e) =>
                             <ListItemButton key={e.id} onClick={() => hendleSetConfigs(e.id)}>
-                                <ListItem sx={{ pl: 4 }}>
+                                <ListItem onClick={handleClose} sx={{ pl: 4 }}>
                                     <Typography color='text'>
                                         {e.name}
                                     </Typography>

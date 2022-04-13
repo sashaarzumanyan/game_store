@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import store from './redux/store'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import './css/index.css'
 
 const theme = createTheme({
   palette: {
@@ -13,9 +14,13 @@ const theme = createTheme({
     },
     background: {
       default: "#222222",
+    },
+    info: {
+      main: '#212121',
     }
   },
 });
+console.log(theme);
 
 
 ReactDOM.render(

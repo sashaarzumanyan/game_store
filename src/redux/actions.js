@@ -34,3 +34,16 @@ export const setConfigsAction = (configs) => {
         payload: configs
     }
 }
+
+export const setPlatformsAction = (configs) => {
+    return{
+        type: "SET_CONFIGS",
+        payload: configs
+    }
+}
+
+export const setFilter = () => {
+    return {
+        type: "SET_FILTER"
+    }
+}

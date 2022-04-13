@@ -1,10 +1,19 @@
-import { Button, Card, CardActions, CardContent, CardMedia, List, ListItem, Typography } from '@mui/material'
+import {
+    Button,
+    Card,
+    CardActions,
+    CardContent,
+    CardMedia,
+    Typography
+} from '@mui/material'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const GameCard = ({ name, image, id }) => {
+const GameCard = ({ name, image , hendleSelectGame,selectedGame}) => {
+    
     return (
         <Card
-            sx={{ height: '100%', fontFamily: 'Robot' }}
+            sx={{ height: '100%', fontFamily: 'Robot', boxShadow: '10' }}
             color='primary'
         >
             <CardMedia
@@ -20,7 +29,11 @@ const GameCard = ({ name, image, id }) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button variant="contained" size="small">Share</Button>
+                <Link to='/game' style={{ textDecoration: 'none' }}>
+                    <Button variant="contained" size="small" onClick={() => hendleSelectGame(selectedGame)} >
+                        Show Game
+                    </Button>
+                </Link>
                 <Button variant="contained" size="small">Learn More</Button>
             </CardActions>
         </Card>
